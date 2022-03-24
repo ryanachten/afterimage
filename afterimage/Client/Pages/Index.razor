@@ -9,11 +9,23 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
-<button @onclick="Hello">Test</button>
+
+@if (_url != null)
+{
+    <img src="@_url" />
+}
+
+<InputFile OnChange="ResizeAndDisplayImage" />
 
 @code {
-    private async Task Hello()
+    private string? _url;
+
+    private async Task ResizeAndDisplayImage(InputFileChangeEventArgs args)
     {
-        await JSRuntime.InvokeVoidAsync("interop.hello");
+        var file = args.File;
+        var resizedImage = await file.RequestImageFileAsync("image/jpg", 1000, 1000);
+        var imageStream = resizedImage.OpenReadStream();
+        var streamReference = new DotNetStreamReference(imageStream);
+        _url = await JSRuntime.InvokeAsync<string>("interop.getImageUrl", streamReference);
     }
 }
