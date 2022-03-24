@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "target": "es5",
+    "outDir": "wwwroot/js"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}
