@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "afterimage.Server", "afterimage\Server\afterimage.Server.csproj", "{F6A1B384-D6C1-4D58-B7ED-57B783F97A03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "afterimage.Server", "Server\afterimage.Server.csproj", "{F6A1B384-D6C1-4D58-B7ED-57B783F97A03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "afterimage.Client", "afterimage\Client\afterimage.Client.csproj", "{A9AB6392-C260-4F46-AF44-A218E061CDC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "afterimage.Client", "Client\afterimage.Client.csproj", "{A9AB6392-C260-4F46-AF44-A218E061CDC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "afterimage.Shared", "afterimage\Shared\afterimage.Shared.csproj", "{BA1EF7EE-F5C5-42C8-B21F-B9E9C2E78362}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "afterimage.Shared", "Shared\afterimage.Shared.csproj", "{BA1EF7EE-F5C5-42C8-B21F-B9E9C2E78362}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{711D2A07-016B-498B-A290-589C28BB0307}"
 	ProjectSection(SolutionItems) = preProject
