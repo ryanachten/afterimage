@@ -1,31 +1,6 @@
-﻿@inject IJSRuntime JSRuntime;
-
-@page "/"
+﻿@page "/"
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-@if (_url != null)
-{
-    <img src="@_url" />
-}
-
-<InputFile OnChange="ResizeAndDisplayImage" />
-
-@code {
-    private string? _url;
-
-    private async Task ResizeAndDisplayImage(InputFileChangeEventArgs args)
-    {
-        var file = args.File;
-        var resizedImage = await file.RequestImageFileAsync("image/jpg", 1000, 1000);
-        var imageStream = resizedImage.OpenReadStream();
-        var streamReference = new DotNetStreamReference(imageStream);
-        _url = await JSRuntime.InvokeAsync<string>("interop.getImageUrl", streamReference);
-    }
-}
+<h1>afterimage</h1>
+<UploadForm />

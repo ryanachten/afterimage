@@ -1,0 +1,14 @@
+﻿@if (_urls.Count == 0)
+{
+    <p>Upload some images to get started</p>
+}
+
+@foreach (var url in _urls)
+{
+    <img src="@url.Value" />
+}
+<div>
+    <label for="album-title">Album title</label>
+    <input id="album-title" @bind="_albumTitle" />
+</div>
+<InputFile accept="image/*" multiple OnChange="DisplayImage" />
