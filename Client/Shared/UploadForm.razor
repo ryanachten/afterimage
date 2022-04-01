@@ -1,14 +1,17 @@
-﻿@if (_urls.Count == 0)
-{
-    <p>Upload some images to get started</p>
-}
+﻿<form @ref="_form" action="/album" enctype="multipart/form-data" @onsubmit="@UploadAlbum">
+    @if (_urls.Count == 0)
+    {
+        <p>Upload some images to get started</p>
+    }
 
-@foreach (var url in _urls)
-{
-    <img src="@url.Value" />
-}
-<div>
-    <label for="album-title">Album title</label>
-    <input id="album-title" @bind="_albumTitle" />
-</div>
-<InputFile accept="image/*" multiple OnChange="DisplayImage" />
+    @foreach (var url in _urls)
+    {
+        <img src="@url.Value" />
+    }
+    <div>
+        <label for="album-title">Album title</label>
+        <input name="title" id="album-title" @bind="_albumTitle" />
+    </div>
+    <InputFile name="images" id="image-upload" accept="image/*" multiple OnChange="DisplayImage" />
+    <button type="submit">Create album</button>
+</form>

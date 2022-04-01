@@ -10,9 +10,14 @@ namespace afterimage.Client.Shared
         [Inject]
         public IJSRuntime JsRuntime { get; set; }
 
+        [Inject]
+        public HttpClient HttpClient  { get; set; }
+        
         protected string? _albumTitle = null;
         protected Dictionary<string, string> _urls = new();
-        protected Dictionary<string, Stream> _streams = new();
+        protected Dictionary<string, IBrowserFile> _files = new();
+
+        protected ElementReference _form { get; set; }
 
         protected async Task DisplayImage(InputFileChangeEventArgs args)
         {
@@ -25,8 +30,18 @@ namespace afterimage.Client.Shared
                 var streamReference = new DotNetStreamReference(imageStream);
                 var url = await JsRuntime.InvokeAsync<string>("interop.getImageUrl", streamReference);
                 _urls.Add(file.Name, url);
-                _streams.Add(file.Name, imageStream);
+                _files.Add(file.Name, file);
             }
+        }
+
+        protected async Task UploadAlbum()
+        {
+            // TODO: add better user-facing validation
+            if (_albumTitle == null || _files.Count == 0) return;
+
+            var success = await JsRuntime.InvokeAsync<bool>("interop.submitForm", _form);
+
+            // TODO: user-facing error handling
         }
     }
 }
