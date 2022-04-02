@@ -5,7 +5,7 @@ using static afterimage.Client.Constants.Api;
 
 namespace afterimage.Client.Pages
 {
-    public partial class Index : ComponentBase
+    public partial class Upload : ComponentBase
     {
         [Inject]
         public HttpClient HttpClient { get; set; }

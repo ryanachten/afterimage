@@ -1,0 +1,17 @@
+﻿@page "/"
+
+<PageTitle>Login</PageTitle>
+
+<h3>Login</h3>
+<form @onsubmit="@LoginUser">
+    
+    <div>
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" @bind="_email" />
+    </div>
+    <div>
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" @bind="_password" />
+    </div>
+    <button type="submit">Login</button>
+</form>
