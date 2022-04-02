@@ -4,6 +4,7 @@ namespace afterimage.Server.Services
 {
     public interface IStorageService
     {
-        Task<bool> UploadFiles(UploadFilesRequest request);
+        Task<IEnumerable<string>> GetFiles();
+        Task UploadFiles(UploadFilesRequest request);
     }
 }

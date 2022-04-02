@@ -1,4 +1,6 @@
-﻿namespace afterimage.Server.Models
+﻿using Microsoft.AspNetCore.Http;
+
+namespace afterimage.Server.Models
 {
     public class CreateAlbumRequest
     {

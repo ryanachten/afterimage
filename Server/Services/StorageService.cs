@@ -7,6 +7,8 @@ namespace afterimage.Server.Services
 {
     public class StorageService : IStorageService
     {
+        private const string _imageBucketName = Storage.ImageBucketName;
+        private const string _userFolderName = "123abc"; // TODO: this will later be derived from user ID
         private readonly AmazonS3Client _client;
 
         public StorageService()
@@ -14,25 +16,41 @@ namespace afterimage.Server.Services
             _client = new AmazonS3Client();
         }
 
-        public async Task<bool> UploadFiles(UploadFilesRequest request)
+        public async Task<IEnumerable<string>> GetFiles()
         {
-            // TODO: need to handle all files, just not the first one
-            var file = request.Files[0];
-            using var stream = file.OpenReadStream();
+            var objects = await _client.ListObjectsAsync(new ListObjectsRequest()
+            {
+                BucketName = _imageBucketName,
+                Prefix = _userFolderName,
+            });
+            // TODO: there's more useful information we might want to use here, i.e. last updated
+            var prefixes = objects.CommonPrefixes;
+
+            return objects.S3Objects.Select(o => o.Key);
+        }
+
+        public async Task UploadFiles(UploadFilesRequest request)
+        {
+            var uploads = new List<Task>();
+            foreach (var file in request.Files)
+            {
+                var upload = _client.PutObjectAsync(new PutObjectRequest()
+                {
+                    BucketName = _imageBucketName,
+                    InputStream = file.OpenReadStream(),
+                    Key = $"{_userFolderName}/{request.FolderName}/{file.FileName}",
+                });
+                uploads.Add(upload);
+            }
+
             try
             {
-                var res = await _client.PutObjectAsync(new PutObjectRequest()
-                {
-                    BucketName = Storage.ImageBucketName,
-                    InputStream = stream,
-                    Key = file.FileName,
-                });
-                var httpStatus = res.HttpStatusCode;
-                return true;
+                await Task.WhenAll(uploads);
             }
             catch (Exception)
             {
-                return false;
+                // TODO: Add better error handling for uploading images
+                throw;
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿<form @ref="_form" action="/album" enctype="multipart/form-data" @onsubmit="@UploadAlbum">
+﻿@using static afterimage.Client.Constants.Api
+
+<form @ref="_form" action="/@Endpoints.Album" enctype="multipart/form-data" @onsubmit="@UploadAlbum">
     @if (_urls.Count == 0)
     {
         <p>Upload some images to get started</p>

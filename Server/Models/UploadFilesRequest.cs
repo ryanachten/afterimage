@@ -2,7 +2,7 @@
 {
     public class UploadFilesRequest
     {
-        public string FolderName { get; set; }
+        public string FolderName { get; set; } = string.Empty;
         public List<IFormFile> Files { get; set; } = new();
     }
 }
