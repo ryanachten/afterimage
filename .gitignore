@@ -397,3 +397,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Initialisation files
+setup.ps1
+
+# Terraform
+.terraform
+.terraform.lock.hcl
+terraform.tfstate*
