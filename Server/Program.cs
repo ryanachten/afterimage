@@ -1,11 +1,13 @@
-using Microsoft.AspNetCore.ResponseCompression;
+using afterimage.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// View services
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+// Custom services
+builder.Services.AddSingleton<IStorageService, StorageService>();
 
 var app = builder.Build();
 
