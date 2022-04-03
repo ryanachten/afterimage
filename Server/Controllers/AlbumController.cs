@@ -1,17 +1,18 @@
 ﻿using afterimage.Server.Models;
-using afterimage.Server.Services;
+using afterimage.Server.Repositories;
 using afterimage.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
+using static afterimage.Shared.Constants.Api;
 
 namespace afterimage.Server.Controllers
 {
-    [Route("[controller]")]
+    [Route(Endpoints.Album)]
     [ApiController]
     public class AlbumController : ControllerBase
     {
-        private readonly IStorageService _storageService;
+        private readonly IFileStorageRepository _storageService;
 
-        public AlbumController(IStorageService storageService)
+        public AlbumController(IFileStorageRepository storageService)
         {
             _storageService = storageService;
         }

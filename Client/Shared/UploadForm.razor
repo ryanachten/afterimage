@@ -1,4 +1,4 @@
-﻿@using static afterimage.Client.Constants.Api
+﻿@using static afterimage.Shared.Constants.Api
 
 <form @ref="_form" action="/@Endpoints.Album" enctype="multipart/form-data" @onsubmit="@UploadAlbum">
     @if (_urls.Count == 0)

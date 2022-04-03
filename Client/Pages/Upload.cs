@@ -1,18 +1,18 @@
 ﻿using afterimage.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
-using static afterimage.Client.Constants.Api;
+using static afterimage.Shared.Constants.Api;
 
 namespace afterimage.Client.Pages
 {
     public partial class Upload : ComponentBase
     {
         [Inject]
-        public HttpClient HttpClient { get; set; }
+        protected HttpClient _client { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            var albums = await HttpClient.GetFromJsonAsync<GetAlbumsResponse>(Endpoints.Album);
+            var albums = await _client.GetFromJsonAsync<GetAlbumsResponse>(Endpoints.Album);
         }
     }
 }
