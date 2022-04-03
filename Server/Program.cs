@@ -1,4 +1,4 @@
-using afterimage.Server.Services;
+using afterimage.Server.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +7,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 // Custom services
-builder.Services.AddSingleton<IStorageService, StorageService>();
+builder.Services.AddSingleton<IAuthenticationRepository, AuthenticationRepository>();
+builder.Services.AddSingleton<IFileStorageRepository, FileStorageRepository>();
 
 var app = builder.Build();
 

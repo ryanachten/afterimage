@@ -3,15 +3,15 @@ using afterimage.Server.Models;
 using Amazon.S3;
 using Amazon.S3.Model;
 
-namespace afterimage.Server.Services
+namespace afterimage.Server.Repositories
 {
-    public class StorageService : IStorageService
+    public class FileStorageRepository : IFileStorageRepository
     {
         private const string _imageBucketName = Storage.ImageBucketName;
         private const string _userFolderName = "123abc"; // TODO: this will later be derived from user ID
         private readonly AmazonS3Client _client;
 
-        public StorageService()
+        public FileStorageRepository()
         {
             _client = new AmazonS3Client();
         }

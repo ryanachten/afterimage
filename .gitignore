@@ -402,6 +402,5 @@ FodyWeavers.xsd
 setup.ps1
 
 # Terraform
-.terraform
-.terraform.lock.hcl
+.terraform*
 terraform.tfstate*

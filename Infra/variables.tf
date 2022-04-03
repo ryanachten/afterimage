@@ -1,3 +1,15 @@
+variable "server_client_name" {
+  description = "Cognito client name used by server"
+  type        = string
+  default     = "afterimage-server"
+}
+
+variable "user_pool_name" {
+  description = "Cognito user pool name"
+  type        = string
+  default     = "afterimage-users"
+}
+
 variable "image_storage_bucket_name" {
   description = "S3 bucket name for image storage"
   type        = string
