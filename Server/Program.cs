@@ -1,4 +1,5 @@
 using afterimage.Server.Repositories;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +31,7 @@ app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication().AddOpenIdConnect();
 
 app.MapRazorPages();
 app.MapControllers();
