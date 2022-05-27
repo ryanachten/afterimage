@@ -11,30 +11,9 @@ async function getImageUrl(imageStream: IStream) {
   return url;
 }
 
-interface ICreateAlbumRequest {
-  title: string;
-  images: File[];
-}
-
-async function submitForm(formElement: HTMLFormElement) {
-  try {
-    const formData = new FormData(formElement);
-
-    const res = await fetch(formElement.action, {
-      method: "POST",
-      body: formData,
-    });
-    return res.ok;
-  } catch (e) {
-    console.log("error submitting form", e);
-    return false;
-  }
-}
-
 function Load() {
   window["interop"] = {
     getImageUrl,
-    submitForm,
   };
 }
 Load();

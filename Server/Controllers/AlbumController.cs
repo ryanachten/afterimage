@@ -1,10 +1,12 @@
 ﻿using afterimage.Server.Models;
 using afterimage.Server.Services;
 using afterimage.Shared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace afterimage.Server.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class AlbumController : ControllerBase
