@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  afterimage.server:
+    image: ${DOCKER_REGISTRY-}afterimageserver
+    build:
+      context: .
+      dockerfile: Server/Dockerfile
