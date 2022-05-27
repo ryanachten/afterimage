@@ -1,6 +1,8 @@
 # afterimage
 
 ## Development
+
+### Prerequisites
 Running locally, using the `afterimage.Server` launch profile in Visual Studio, you will need a `afterimage` AWS profile created.
 
 For example, in `.aws/config`
