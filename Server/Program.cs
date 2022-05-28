@@ -1,4 +1,5 @@
 using afterimage.Server.Data;
+using afterimage.Server.Identity;
 using afterimage.Server.Models;
 using afterimage.Server.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -16,7 +17,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddIdentityServer()
-    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>()
+    .AddInMemoryApiResources(IdentityConfig.Resources)
+    .AddInMemoryClients(IdentityConfig.Clients);
+
+builder.Services.AddLocalApiAuthentication();
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
